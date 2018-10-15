@@ -71,17 +71,10 @@ For full code go to  [data_preparing.ipynb](https://github.com/ksulima/Age_Detec
 
 Original images varies in width and height. I resize them all to 128x128 width x height and 3 channels (rgb).    
 
-Example of young class:
+Example of Young, Middle and Old observation:
 
-<img src="images/young_img.PNG">
+<img src="images/young_img.png"> <img src="images/middle_img.png"> <img src="images/old_img.png">
 
-Example of middle class:
-
-<img src="images/middle_img.PNG">
-
-Example of old class:
-
-<img src="images/old_img.PNG">
 
 
 
