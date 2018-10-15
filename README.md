@@ -67,7 +67,7 @@ Total validation old images: 796
 For full code go to  [data_preparing.ipynb](https://github.com/ksulima/Age_Detection_Convolutional_NN/blob/master/notebooks/data_preparing.ipynb)
 
 
-### Image preprocessing with ImageDataGenerator implemented in Kera. 
+### Image preprocessing with ImageDataGenerator implemented in Keras. 
 
 Original images varies in width and height. I resize them all to 128x128 width x height and 3 channels (rgb).    
 
@@ -82,6 +82,10 @@ Example of middle class:
 Example of old class:
 
 <img src="images/old_img.PNG">
+
+
+
+
 ## Steps:
 - Prepare dataset by sample small dataset size and organize file structure. `data_preparing.ipynb`
 - Image preprocessing with ImageDataGenerator implemented in Keras.
