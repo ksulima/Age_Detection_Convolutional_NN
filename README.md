@@ -67,13 +67,46 @@ Total validation old images: 796
 For full code go to  [data_preparing.ipynb](https://github.com/ksulima/Age_Detection_Convolutional_NN/blob/master/notebooks/data_preparing.ipynb)
 
 
-### Image preprocessing with ImageDataGenerator implemented in Keras. 
+### Image preprocessing.
 
-Original images varies in width and height. I resize them all to 128x128 width x height and 3 channels (rgb).    
+Keras ImageDataGenerator automatically turn image files on disk into batches of preprocessed tensors.
 
 Example of Young, Middle and Old observation:
 
 <img src="images/young_img.png"> <img src="images/middle_img.png"> <img src="images/old_img.png">
+
+Original images varies in width and height. I resize them all to 128x128 width x height and 3 channels (rgb). 
+
+I rescale the pixel values (between 0 and 255) to the [0, 1], as neural networks prefer to deal with small input values.
+
+```
+train_datagen = ImageDataGenerator(rescale=1./255) #Rescales all images by 1/255
+validation_datagen = ImageDataGenerator(rescale=1./255)
+```
+
+```
+batch_size = 32
+img_size = (128,128,3)
+
+train_generator = train_datagen.flow_from_directory(
+                    train_dir, # Target directory
+                    target_size=img_size[:2], # Resize all images to 128x128 
+                    batch_size=batch_size,
+                    color_mode='rgb', 
+                    class_mode='categorical')
+```
+Found 4800 images belonging to 3 classes.
+
+```
+validation_generator = validation_datagen.flow_from_directory(
+                    validation_dir, # Target directory
+                    target_size=img_size[:2], # Resize all images to 128x128 
+                    batch_size=batch_size,
+                    color_mode='rgb',
+                    class_mode='categorical')
+```
+Found 2396 images belonging to 3 classes.
+
 
 
 
