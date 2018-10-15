@@ -11,9 +11,23 @@ All needed theoretical knowledge about Convolutional Neural Networks to fully un
 
 Indian Movie Face database (IMFDB) is a large unconstrained face database consisting of 34512 images of 100 Indian actors collected from more than 100 videos. All the images are manually selected and cropped from the video frames resulting in a high degree of variability interms of scale, pose, expression, illumination, age, resolution, occlusion, and makeup. IMFDB is the first face database that provides a detailed annotation of every image in terms of age, pose, gender, expression and type of occlusion that may help other face related applications. For more information and link to download can be found [here](http://cvit.iiit.ac.in/projects/IMFDB/). 
 
+
 <img src="images/dataset_intro.PNG" width="900">
 
-## Project Steps:
+
+## Project Plan:
+---
+- Prepare dataset by sample small dataset size and organize file structure. `data_preparing.ipynb`
+- Image preprocessing with ImageDataGenerator implemented in Keras.
+- Build CNN baseline model
+- Include some regularization techniques to model (Dropout and BatchNormalization) 
+- Use Data augmentation to mitigate overfitting.
+- Use some well-known convolutional networks with weights pre-trained on ImageNet to build model with higher performance. 
+- Fine-tuning weights in a few top layers network.
+- Conclusions
+
+
+## Steps:
 
 
 ### Prepare dataset by sample small dataset size and organize file structure. 
@@ -67,6 +81,7 @@ Total validation old images: 796
 For full code go to  [data_preparing.ipynb](https://github.com/ksulima/Age_Detection_Convolutional_NN/blob/master/notebooks/data_preparing.ipynb)
 
 
+
 ### Image preprocessing.
 
 Keras ImageDataGenerator automatically turn image files on disk into batches of preprocessed tensors.
@@ -112,12 +127,4 @@ Found 2396 images belonging to 3 classes.
 
 
 
-## Steps:
-- Prepare dataset by sample small dataset size and organize file structure. `data_preparing.ipynb`
-- Image preprocessing with ImageDataGenerator implemented in Keras.
-- Build CNN baseline model
-- Include some regularization techniques to model (Dropout and BatchNormalization) 
-- Use Data augmentation to mitigate overfitting.
-- Use some well-known convolutional networks with weights pre-trained on ImageNet to build model with higher performance. 
-- Fine-tuning weights in a few top layers network.
-- Conclusions
+
