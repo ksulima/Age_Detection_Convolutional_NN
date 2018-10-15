@@ -15,9 +15,51 @@ Indian Movie Face database (IMFDB) is a large unconstrained face database consis
 
 ### Prepare dataset by sample small dataset size and organize file structure. 
 
+For simplicity I dataset is downloaded from [datahack.analyticsvidhya.com](https://datahack.analyticsvidhya.com/contest/practice-problem-age-detection/). The labels has been already converted to a multiclass problem with classes as Young, Middle and Old.
+
+Since I will use [`ImageDataGenerator.flow_from_directory()`](https://keras.io/preprocessing/image/) to preprocess data, it expects data to be organized in following directiories and subdirectories.  
+
+
+
+```
+train_young_dir = os.path.join(train_dir, 'young')
+os.mkdir(train_young_dir)
+
+validation_young_dir = os.path.join(validation_dir, 'young')
+os.mkdir(validation_young_dir)
+```
 
 <img src="images/files_structure.PNG" width="100">
-For full code go to [data_preparing]
+
+Then I random sample small available data to have assumpted small data size. 
+
+```
+# Young class
+
+labels_young = labels.loc[labels.Class == 'YOUNG']
+labels_young = labels_young.sample(frac=1)
+
+for i, row in labels_young.iloc[:1600].iterrows():
+    src = os.path.join(train_all, row.ID)
+    dst = os.path.join(train_young_dir, row.ID)
+    shutil.copy(src, dst)
+    
+for i, row in labels_young.iloc[1600:2400].iterrows():
+    src = os.path.join(train_all, row.ID)
+    dst = os.path.join(validation_young_dir, row.ID)
+    shutil.copy(src, dst)
+```
+
+```
+Total training young images: 1600
+Total training middle images: 1600
+Total training old images: 1600
+Total validation young images: 800
+Total validation middle images: 800
+Total validation old images: 796
+```
+
+For full code go to  [data_preparing.ipynb](https://github.com/ksulima/Age_Detection_Convolutional_NN/blob/master/notebooks/data_preparing.ipynb)
 
 ## Steps:
 - Prepare dataset by sample small dataset size and organize file structure. `data_preparing.ipynb`
