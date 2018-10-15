@@ -31,7 +31,7 @@ os.mkdir(validation_young_dir)
 
 <img src="images/files_structure.PNG" width="100">
 
-Then I random sample small available data to have assumpted small data size. 
+Then I restrict available data to small dataset size by random sampling. 
 
 ```
 # Young class
@@ -50,6 +50,7 @@ for i, row in labels_young.iloc[1600:2400].iterrows():
     shutil.copy(src, dst)
 ```
 
+Prepared training and validation dataset:
 ```
 Total training young images: 1600
 Total training middle images: 1600
