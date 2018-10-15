@@ -82,7 +82,7 @@ For full code go to  [data_preparing.ipynb](https://github.com/ksulima/Age_Detec
 
 
 
-### Image preprocessing.
+### Image preprocessing
 
 Keras ImageDataGenerator automatically turn image files on disk into batches of preprocessed tensors.
 
@@ -124,7 +124,7 @@ Found 2396 images belonging to 3 classes.
 
 
 
-
+### Build CNN baseline model
 
 
 
