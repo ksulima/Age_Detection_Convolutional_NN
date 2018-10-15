@@ -13,6 +13,14 @@ Indian Movie Face database (IMFDB) is a large unconstrained face database consis
 
 <img src="images/dataset_intro.PNG" width="900">
 
+## Prepare dataset by sample small dataset size and organize file structure. 
+
+
+
+For full code go to [data_preparing.ipynb]()
+
+
+
 ## Steps:
 - Prepare dataset by sample small dataset size and organize file structure. `data_preparing.ipynb`
 - Image preprocessing with ImageDataGenerator implemented in Keras.
