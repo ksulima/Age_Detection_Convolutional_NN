@@ -19,7 +19,7 @@ Indian Movie Face database (IMFDB) is a large unconstrained face database consis
 ---
 - Narrow data to small dataset size and organize file structure.
 - Image preprocessing with Keras ImageDataGenerator.
-- Build CNN reference model.
+- Build CNN baseline model.
 - Include some regularization techniques.
 - Use Data augmentation to mitigate overfitting.
 - Use some well-known convolutional networks with weights pre-trained on ImageNet to build model with higher performance. 
@@ -124,7 +124,45 @@ Found 2396 images belonging to 3 classes.
 
 
 
-### Build CNN reference model
+### Build CNN baseline model
+
+In this step the goal is to set some baseline, what can we achive on the 4800 training samples with small convnet, without any regularization and feature engineering techniques. It should show where we start and what is the potencial for improvement.
+ 
+To figure out what exact architecture to use, I looked over similar image-classification problems.
 
 
+```
+model = models.Sequential()
+
+model.add(layers.Conv2D(32, (3,3), activation='relu', input_shape=img_size) )
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(128, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(128, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(128, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Flatten())
+model.add(layers.Dense(512, activation='relu'))
+model.add(layers.Dense(3, activation='softmax'))
+
+model.compile(loss='categorical_crossentropy', optimizer=optimizers.RMSprop(lr=1e-4), metrics=['acc'])
+```
+
+```
+#Fit model
+history = model.fit_generator(
+          train_generator,
+          steps_per_epoch=150,
+          epochs=30,
+          validation_data=validation_generator,
+          validation_steps=75,
+          verbose = 1,
+          callbacks=[csv_logger])
+```
+
+
+<img src="images/baseline_model_curve.png" width="900">
 
