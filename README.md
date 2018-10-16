@@ -261,3 +261,5 @@ _Augmentated images:_
 <img src="images/data_augmentation.png">
 
 
+Model trained using data-augmentation generators:
+<img src="images/model_data_aug_curve.png.png" width="900">
