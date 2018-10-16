@@ -173,3 +173,44 @@ We reach about 68% accuracy on validation set - not so bad for the beginning. Tr
 Main insights:
  - we have overfitting issue. While training, model starts to overfit after 12 epochs.
  - we could probably fit model to almost 100% training accuracy. Baseline model architecture is sufficiently complex, model can grasp all nuances in training data - that's good.
+ 
+ 
+ ## Include some regularization techniques
+ 
+ Let's include two regularization techniques to the baseline model, Dropout and Batch Normalization.
+ 
+ 
+ Model:
+ ```
+ model = models.Sequential()
+
+  model.add( layers.Conv2D(32, (3,3), activation='relu', input_shape=img_size) )
+  model.add(layers.BatchNormalization(axis=1))
+  model.add(layers.MaxPooling2D((2, 2)))
+  model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+  model.add(layers.BatchNormalization(axis=1))
+  model.add(layers.MaxPooling2D((2, 2)))
+  model.add(layers.Conv2D(128, (3, 3), activation='relu'))
+  model.add(layers.BatchNormalization(axis=1))
+  model.add(layers.MaxPooling2D((2, 2)))
+  model.add(layers.Conv2D(128, (3, 3), activation='relu'))
+  model.add(layers.BatchNormalization(axis=1))
+  model.add(layers.MaxPooling2D((2, 2)))
+  model.add(layers.Conv2D(128, (3, 3), activation='relu'))
+  model.add(layers.BatchNormalization(axis=1))
+  model.add(layers.MaxPooling2D((2, 2)))
+  model.add(layers.Flatten())
+  model.add(layers.Dropout(0.3))
+  model.add(layers.Dense(512, activation='relu'))
+  model.add(layers.BatchNormalization(axis=1))
+  model.add(layers.Dropout(0.3))
+  model.add(layers.Dense(3, activation='softmax'))
+  
+  model.compile(loss='categorical_crossentropy', optimizer=optimizers.RMSprop(lr=1e-4), metrics=['acc'])
+  
+ ```
+ 
+ Results:
+<img src="images/model_BN_dropout_curve.png" width="900">
+
+Dropout and Batch Normalization helped a little to mitigate overfitting, but generally we still have a issue. Validation accuracy exceed 70%. 
