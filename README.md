@@ -17,10 +17,10 @@ Indian Movie Face database (IMFDB) is a large unconstrained face database consis
 
 ## Project Plan:
 ---
-- Prepare dataset by sample small dataset size and organize file structure. `data_preparing.ipynb`
-- Image preprocessing with ImageDataGenerator implemented in Keras.
-- Build CNN baseline model
-- Include some regularization techniques to model (Dropout and BatchNormalization) 
+- Narrow data to small dataset size and organize file structure.
+- Image preprocessing with Keras ImageDataGenerator.
+- Build CNN reference model.
+- Include some regularization techniques.
 - Use Data augmentation to mitigate overfitting.
 - Use some well-known convolutional networks with weights pre-trained on ImageNet to build model with higher performance. 
 - Fine-tuning weights in a few top layers network.
@@ -30,7 +30,7 @@ Indian Movie Face database (IMFDB) is a large unconstrained face database consis
 ## Steps:
 
 
-### Prepare dataset by sample small dataset size and organize file structure. 
+### Narrow data to small dataset size and organize file structure. 
 
 
 For simplicity I dataset is downloaded from [datahack.analyticsvidhya.com](https://datahack.analyticsvidhya.com/contest/practice-problem-age-detection/). The labels has been already converted to a multiclass problem with classes as Young, Middle and Old.
@@ -49,7 +49,7 @@ os.mkdir(validation_young_dir)
 
 <img src="images/files_structure.PNG" width="100">
 
-Then I restrict available data to small dataset size by random sampling. 
+Then I narrow available data to small dataset size by random sampling. 
 
 ```
 # Young class
@@ -124,7 +124,7 @@ Found 2396 images belonging to 3 classes.
 
 
 
-### Build CNN baseline model
+### Build CNN reference model
 
 
 
