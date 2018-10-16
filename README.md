@@ -131,6 +131,7 @@ In this step the goal is to set some baseline, what can we achive on the 4800 tr
 To figure out what exact architecture to use, I looked over similar image-classification problems.
 
 
+Model:
 ```
 model = models.Sequential()
 
@@ -151,8 +152,8 @@ model.add(layers.Dense(3, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer=optimizers.RMSprop(lr=1e-4), metrics=['acc'])
 ```
 
+Fit model:
 ```
-#Fit model
 history = model.fit_generator(
           train_generator,
           steps_per_epoch=150,
@@ -164,5 +165,11 @@ history = model.fit_generator(
 ```
 
 
+Results:
 <img src="images/baseline_model_curve.png" width="900">
 
+We reach about 68% accuracy on validation set - not so bad for the beginning. Training accuracy reaches 90% and it increases linearly with epochs. The validation loss reaches its minimum at 13 epoch.
+
+Main insights:
+ - we have overfitting issue. While training, model starts to overfit after 12 epochs.
+ - we could probably fit model to almost 100% training accuracy. Baseline model architecture is sufficiently complex, model can grasp all nuances in training data - that's good.
