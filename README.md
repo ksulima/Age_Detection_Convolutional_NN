@@ -257,6 +257,7 @@ _Original image:_
 <img src="images/young_img.png">
 
 _Augmentated images:_
+
 <img src="images/data_augmentation.png">
 
 
