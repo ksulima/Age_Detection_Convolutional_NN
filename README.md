@@ -175,7 +175,7 @@ Main insights:
  - we could probably fit model to almost 100% training accuracy. Baseline model architecture is sufficiently complex, model can grasp all nuances in training data - that's good.
  
  
- ## Include some regularization techniques
+ ### Include some regularization techniques
  
  Let's include two regularization techniques to the baseline model, Dropout and Batch Normalization.
  
@@ -214,3 +214,49 @@ Main insights:
 <img src="images/model_BN_dropout_curve.png" width="900">
 
 Dropout and Batch Normalization helped a little to mitigate overfitting, but generally we still have a issue. Validation accuracy exceed 70%. 
+
+
+### Data augmentation
+
+When building model on small data size, overfitting is almost always a main concern. One of the technique to deal with in image processing problem is data augmentation. We can understand data augmentation as performing random transformations to our original training images in order to expand pool of our data. These transformations are e.g. rotation, shear, width and height shift, zoom.
+
+Let's see an example:
+
+```
+train_datagen = ImageDataGenerator(
+            rescale=1./255,
+            rotation_range=40,
+            width_shift_range=0.2,
+            height_shift_range=0.2,
+            shear_range=0.2,
+            zoom_range=0.2,
+            horizontal_flip=True,
+            fill_mode='nearest')
+            
+x = image.img_to_array(img)
+x = x.reshape((1,) + x.shape)
+
+i = 0
+imgs = []
+for batch in train_datagen.flow(x, batch_size=1):
+  imgs.append(image.array_to_img(batch[0])) 
+  i += 1
+  if i % 4 == 0:
+    break
+    
+fig=plt.figure(figsize=(6, 6))
+
+for i, img in enumerate(imgs):
+    fig.add_subplot(2, 2, i+1)
+    plt.imshow(img)
+    
+plt.show()
+```
+_Original image:_
+
+<img src="images/young_img.png">
+
+_Augmentated images:_
+<img src="images/data_augmentation.png">
+
+
