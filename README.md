@@ -269,3 +269,12 @@ Performance is on comparable level of about 70%.
 The interesting insight is that accuracy on validation data is slightly above accuracy on training data. 
 This is not usual case, yet possible especially on small dataset. I skip explanation, but you can read more [here 1](https://stackoverflow.com/a/48845817), [here 2.](https://stackoverflow.com/a/42924616)
 
+
+### Using pretrained network
+
+One of effective approach for image datasets is to use pretrained network. These network architectures are results of research studies, they are usually trained on a large-scale image-classification task and demonstrate ability to generalize to images outside the orignal  dataset via phenomenon of transfer learning.
+
+For my task I will use VGG16 network:
+
+<img src="images/vgg16.png" width="600">
+A visualization of the VGG architecture [source](https://bit.ly/2EqsArT)
