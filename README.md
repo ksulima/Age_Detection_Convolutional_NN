@@ -265,9 +265,9 @@ Model trained using data augmentation generators:
 <img src="images/model_data_aug_curve.png" width="900">
 
 We manage to mitigate overfitting via data augmentation. Now training and validation curves are close to each other.
-Performance is on comparable level of about 70%.
-The interesting insight is that accuracy on validation data is slightly above accuracy on training data. 
-This is not usual case, yet possible especially on small dataset. I skip explanation, but you can read more [here 1](https://stackoverflow.com/a/48845817), [here 2.](https://stackoverflow.com/a/42924616)
+We could also increase performance to 74% on validation data. 
+
+Notice that although this is not usual case, sometimes accuracy on validation data might be slightly above accuracy on training data. This can happen especially on small dataset. I skip explanation, but you can read more [here 1](https://stackoverflow.com/a/48845817), [here 2.](https://stackoverflow.com/a/42924616)
 
 
 ### Using pretrained network
@@ -278,3 +278,10 @@ For my task I will use VGG16 network:
 
 <img src="images/vgg16.png" width="600">
 _A visualization of the VGG architecture, source (https://bit.ly/2EqsArT)_
+
+To take advantage of pretrained network and apply it to our task, we drop fully connected top layers and train train the from scratch to our particular problem.
+
+There are **two approches** to use pretrained network:
+ - feature extraction
+ - fine-tuning
+
