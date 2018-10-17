@@ -277,11 +277,26 @@ One of effective approach for image datasets is to use pretrained network. These
 For my task I will use VGG16 network:
 
 <img src="images/vgg16.png" width="600">
-_A visualization of the VGG architecture, source (https://bit.ly/2EqsArT)_
+_A visualization of the VGG architecture, source https://bit.ly/2EqsArT _
+
 
 To take advantage of pretrained network and apply it to our task, we drop fully connected top layers and train train the from scratch to our particular problem.
 
-There are **two approches** to use pretrained network:
- - feature extraction
- - fine-tuning
+There are **two approches** to use pretrained network, it well summarized in book, which I mentioned in the Introduction:
+
+First:
+_Running the convolutional base over your dataset, recording its output to a
+Numpy array on disk, and then using this data as input to a standalone, densely
+connected classifier similar to those you saw in part 1 of this book. This solution
+is fast and cheap to run, because it only requires running the convolutional
+base once for every input image, and the convolutional base is by far the most
+expensive part of the pipeline. But for the same reason, this technique won’t
+allow you to use data augmentation._
+
+Second:
+_Extending the model you have (conv_base) by adding Dense layers on top, and
+running the whole thing end to end on the input data. This will allow you to use
+data augmentation, because every input image goes through the convolutional
+base every time it’s seen by the model. But for the same reason, this technique is
+far more expensive than the first._
 
