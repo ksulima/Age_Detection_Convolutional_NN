@@ -285,6 +285,7 @@ To take advantage of pretrained network and apply it to our task, we drop fully 
 There are **two approches** to use pretrained network, it well summarized in book, which I mentioned in the Introduction:
 
 First:
+
 _Running the convolutional base over your dataset, recording its output to a
 Numpy array on disk, and then using this data as input to a standalone, densely
 connected classifier similar to those you saw in part 1 of this book. This solution
@@ -294,9 +295,53 @@ expensive part of the pipeline. But for the same reason, this technique won’t
 allow you to use data augmentation._
 
 Second:
+
 _Extending the model you have (conv_base) by adding Dense layers on top, and
 running the whole thing end to end on the input data. This will allow you to use
 data augmentation, because every input image goes through the convolutional
 base every time it’s seen by the model. But for the same reason, this technique is
 far more expensive than the first._
 
+
+I tested both. In a first one I didn't manage to receive better results, than so far. Here I will present second approach.
+
+
+Instantiating the VGG16 convolutional base:
+```
+conv_base = VGG16(weights='imagenet',
+                 include_top=False,
+                 input_shape=img_size)
+```
+
+Add top custom fully connected top layers:
+```
+model = models.Sequential()
+model.add(conv_base)
+model.add(layers.Flatten())
+model.add(layers.Dense(256, activation='relu'))
+model.add(layers.Dense(3, activation='softmax'))                               
+```
+Freeze convolutional base to prevent  their weights from being updated during training:
+```
+conv_base.trainable = False
+```
+
+```
+model.summary()
+
+Layer (type)                 Output Shape              Param #   
+=================================================================
+vgg16 (Model)                (None, 4, 4, 512)         14714688  
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 8192)              0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 256)               2097408   
+_________________________________________________________________
+dense_4 (Dense)              (None, 3)                 771       
+=================================================================
+Total params: 16,812,867
+Trainable params: 2,098,179
+Non-trainable params: 14,714,688
+
+
+```
