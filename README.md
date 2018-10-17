@@ -265,4 +265,7 @@ Model trained using data augmentation generators:
 <img src="images/model_data_aug_curve.png" width="900">
 
 We manage to mitigate overfitting via data augmentation. Now training and validation curves are close to each other.
+Performance is on comparable level of about 70%.
+The interesting insight is that accuracy on validation data is slightly above accuracy on training data. 
+This is not usual case, yet possible especially on small dataset. I skip explanation, but you can read more [here 1](https://stackoverflow.com/a/48845817), [here 2.](https://stackoverflow.com/a/42924616)
 
