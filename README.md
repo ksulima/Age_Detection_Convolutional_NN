@@ -277,4 +277,4 @@ One of effective approach for image datasets is to use pretrained network. These
 For my task I will use VGG16 network:
 
 <img src="images/vgg16.png" width="600">
-A visualization of the VGG architecture [source](https://bit.ly/2EqsArT)
+_A visualization of the VGG architecture, source (https://bit.ly/2EqsArT)_
