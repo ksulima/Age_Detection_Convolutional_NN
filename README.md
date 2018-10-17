@@ -166,7 +166,7 @@ history = model.fit_generator(
 
 
 Results:
-<img src="images/baseline_model_curve.png" width="900">
+<img src="images/baseline_model_curve2.png" width="900">
 
 We reach about 68% accuracy on validation set - not so bad for the beginning. Training accuracy reaches 90% and it increases linearly with epochs. The validation loss reaches its minimum at 13 epoch.
 
