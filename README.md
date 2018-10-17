@@ -262,7 +262,7 @@ _Augmentated images:_
 
 
 Model trained using data augmentation generators:
-<img src="images/model_data_aug_curve.png" width="900">
+<img src="images/model_data_aug_curve2.png" width="900">
 
 We manage to mitigate overfitting via data augmentation. Now training and validation curves are close to each other.
 We could also increase performance to 74% on validation data. 
