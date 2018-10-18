@@ -1,4 +1,3 @@
-### (in progress)
 
 ## Introduction
 
@@ -373,3 +372,10 @@ Since there are 3 target classes and balanced dataset, totally random model woul
 Baseline convolutional network performance reaches 68%.
 Model with regularizations techniques (Dropout, Batch Normalization) reaches 70% accuracy.
 Model with data augmentation mitigates overfitting and reaches 74% accuracy.
+We tried pretrained VGG16 network, but we couldn't outperform custom models.
+
+The main insights from this project:
+ - It is possible to build deep learning with very limited amount of data and still receive decent results.
+ - Overfitting is main concern, when training on small dataset.
+ - Data augmentation one of top method for image data to mitigate overfitting.
+
