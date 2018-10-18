@@ -344,9 +344,24 @@ Trainable params: 2,098,179
 Non-trainable params: 14,714,688
 ```
 
+```
+history = model.fit_generator(
+        train_generator,
+        steps_per_epoch=150,
+        epochs=50,
+        callbacks=[csv_logger],
+        validation_data=validation_generator,
+        validation_steps=75   
+```
+
+
  Results:
 <img src="images/model_vgg16_curve.png" width="900">
 
+Validation accuracy reaches around 67% - less than models we built so far. I tried to fit vgg16 several times with diffrent parameters and couldn't receive better results. 
+The question is why?
+
+My understanding is that  VGG16 was trained on ImageNet dataset and weights were optimized to classify 1000 diffrent objects, e.g. cats, dogs, car, houses. Since we have only faces and we try to distinguish nuance like age, network trained from scratch will outperform pretrained VGG16.
 
 
 ### Summary
