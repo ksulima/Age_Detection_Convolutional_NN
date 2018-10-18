@@ -342,6 +342,19 @@ dense_4 (Dense)              (None, 3)                 771
 Total params: 16,812,867
 Trainable params: 2,098,179
 Non-trainable params: 14,714,688
-
-
 ```
+
+ Results:
+<img src="images/model_vgg16_curve.png" width="900">
+
+
+
+### Summary
+
+The goal of this project was to explore if it's possible to resolve image-classification problem on small training dataset.
+We work on balanced data with 4800 training images, 2400 validation images and multiclass labels (Young, Middle, Old).
+
+Since there are 3 target classes and balanced dataset, totally random model would return 33% accuracy.
+Baseline convolutional network performance reaches 68%.
+Model with regularizations techniques (Dropout, Batch Normalization) reaches 70% accuracy.
+Model with data augmentation mitigates overfitting and reaches 74% accuracy.
