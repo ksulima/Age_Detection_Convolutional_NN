@@ -377,5 +377,5 @@ We tried pretrained VGG16 network, but we couldn't outperform custom models.
 The main insights from this project:
  - It is possible to build deep learning with very limited amount of data and still receive decent results.
  - Overfitting is main concern, when training on small dataset.
- - Data augmentation one of top method for image data to mitigate overfitting.
+ - Data augmentation is one of top method to mitigate overfitting, when workign with image data.
 
