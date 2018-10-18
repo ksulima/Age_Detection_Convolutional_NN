@@ -277,7 +277,7 @@ One of effective approach for image datasets is to use pretrained network. These
 For my task I will use VGG16 network:
 
 <img src="images/vgg16.png" width="600">
-_A visualization of the VGG architecture, source https://bit.ly/2EqsArT _
+_A visualization of the VGG architecture, source: https://bit.ly/2EqsArT 
 
 
 To take advantage of pretrained network and apply it to our task, we drop fully connected top layers and train train the from scratch to our particular problem.
