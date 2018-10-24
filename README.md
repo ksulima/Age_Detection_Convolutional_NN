@@ -22,7 +22,7 @@ Indian Movie Face database (IMFDB) is a large unconstrained face database consis
 - Include some regularization techniques.
 - Use Data augmentation to mitigate overfitting.
 - Use some well-known convolutional networks with weights pre-trained on ImageNet to build model with higher performance. 
-- Fine-tuning weights in a few top layers network.
+- VGG16 with all weights trainable.
 - Conclusions
 
 
@@ -361,6 +361,53 @@ Validation accuracy reaches around 67% - less than models we built so far. I tri
 The question is why?
 
 My understanding is that  VGG16 was trained on ImageNet dataset and weights were optimized to classify 1000 diffrent objects, e.g. cats, dogs, car, houses. Since we have only faces and we try to distinguish nuance like age, network trained from scratch will outperform pretrained VGG16.
+
+### VGG16 with all weights trainable
+
+As mentioned, pre-trained network did not succeeded in our specific case. This is not a reason to rashly give up VGG16 architecture.
+I will train VGG16 again, but this time with all weigths trainable, so the network can learn to resolve our problem.
+
+In a code above I change:
+
+```
+conv_base.trainable = True
+```
+
+```
+model.summary()
+
+Layer (type)                 Output Shape              Param #   
+=================================================================
+vgg16 (Model)                (None, 4, 4, 512)         14714688  
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 8192)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 512)               4194816   
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 512)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 128)               65664     
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 32)                4128      
+_________________________________________________________________
+dense_4 (Dense)              (None, 3)                 99        
+=================================================================
+Total params: 18,979,395
+Trainable params: 18,979,395
+Non-trainable params: 0
+```
+
+Now the number of trainable parameters increases from 2M to almost 19M. It means that training is much more computationally expensive and takes more time.
+
+
+ Results:
+```
+<img src="images/model_vgg16_trainable_curve.png" width="900">
+```
+
+
 
 
 ### Summary
