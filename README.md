@@ -405,10 +405,8 @@ Now the number of trainable parameters increases from 2M to almost 19M. It means
  Results:
 <img src="images/model_vgg16_trainable_curve.png">
 
-Validation accuracy reaches around 80%. It's worth to see, that we have a overfitting  issue again. 
-Our assumption was basically correct, making all weights trainable VGG16 could learn to resolve our specific case. 
-the hightest results among all previous models. VGG16 architecture outperformed custom networks.
-
+Validation accuracy reaches around 80%. Our assumption was basically correct, making all weights trainable VGG16 could learn to resolve our case and get the hightest results among all previous models. VGG16 architecture outperformed custom networks.
+The bad point is that we have a overfitting issue again.
 
 
 ### Summary
