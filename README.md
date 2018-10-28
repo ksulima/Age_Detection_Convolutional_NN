@@ -403,10 +403,11 @@ Now the number of trainable parameters increases from 2M to almost 19M. It means
 
 
  Results:
-```
 <img src="images/model_vgg16_trainable_curve.png">
-```
 
+Validation accuracy reaches around 80%. It's worth to see, that we have a overfitting  issue again. 
+Our assumption was basically correct, making all weights trainable VGG16 could learn to resolve our specific case. 
+the hightest results among all previous models. VGG16 architecture outperformed custom networks.
 
 
 
@@ -419,10 +420,12 @@ Since there are 3 target classes and balanced dataset, totally random model woul
 Baseline convolutional network performance reaches 68%.
 Model with regularizations techniques (Dropout, Batch Normalization) reaches 70% accuracy.
 Model with data augmentation mitigates overfitting and reaches 74% accuracy.
-We tried pretrained VGG16 network, but we couldn't outperform custom models.
+For pretrained VGG16 network, our case was to specific, it couldn't outperform custom models.
+VGG16 with all weights trainable reaches the hightest performance, around 80%.
+
 
 The main insights from this project:
  - It is possible to build deep learning with very limited amount of data and still receive decent results.
  - Overfitting is main concern, when training on small dataset.
- - Data augmentation is one of top method to mitigate overfitting, when workign with image data.
-
+ - Data augmentation is one of top method to mitigate overfitting, when working with image data.
+ - Well documented and publically avaiable network architectures are efficient way to achieve good performance for some common image classification problems. 
