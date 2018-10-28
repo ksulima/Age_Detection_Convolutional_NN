@@ -404,7 +404,7 @@ Now the number of trainable parameters increases from 2M to almost 19M. It means
 
  Results:
 ```
-<img src="images/model_vgg16_trainable_curve.png" width="900">
+<img src="images/model_vgg16_trainable_curve.png">
 ```
 
 
